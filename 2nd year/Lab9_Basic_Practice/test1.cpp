@@ -8,15 +8,20 @@ struct MachineCode{
     int instructions;
 };
 
+struct LevelOfOptimisation
+{
+    int level;
+};
+
 struct Compilator
 {
     double coeff[4];
-    int levelOfOptimisation;
+    LevelOfOptimisation levelOfOptimisation;
 };
 
 double GetCoeff(Compilator compilator)
 {
-    return compilator.coeff[compilator.levelOfOptimisation];
+    return compilator.coeff[compilator.levelOfOptimisation.level];
 }
 
 MachineCode compile (SourceCode source, Compilator compilator)
@@ -34,7 +39,7 @@ int main()
 
     Compilator compilator{
         { 1.0, 0.9, 0.5, 0.3 },
-        2
+        { 2 }
     };
 
     MachineCode res = compile(source, compilator);
