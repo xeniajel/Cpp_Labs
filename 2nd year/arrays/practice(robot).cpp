@@ -1,12 +1,14 @@
 #include <iostream>
 #include <array>
 
-struct Position{
+struct Position
+{
     int x;
     int y;
 };
 
-struct MapDelivery{
+struct MapDelivery
+{
     std::array<Position, 4> positions;
 };
 
@@ -34,7 +36,7 @@ void Visit(MapDelivery map, Position start, int indexFirst, int indexSecond)
 int main()
 {
     MapDelivery map{
-        {{{3, 4}, {6, 8}, {2, 5}, {9, 1}}}
+        {Position{3, 4}, {6, 8}, {2, 5}, {9, 1}}
     };
 
     Position start{1, 2};

@@ -12,7 +12,8 @@ struct Train
     std::array<Vagon, 3> vagons;
 };
 
-void movePassengers(Train* train, int fromVagon, int toVagon) {
+void movePassengers(Train *train, int fromVagon, int toVagon)
+{
     train->vagons[toVagon].passangers += train->vagons[fromVagon].passangers;
     train->vagons[fromVagon].passangers = 0;
 }
@@ -24,11 +25,13 @@ int emptySeats(Train train, int selectedVagon)
 
 int main()
 {
-    Train train{ { { 
-        {10, 20},
-        {5, 20},
-        {30, 30}
-    } } };
+    Train train{
+        .vagons = {
+            Vagon{10, 20},
+            {5, 20},
+            {30, 30},
+        }
+    };
 
     std::cout << train.vagons[0].passangers << std::endl;
     std::cout << train.vagons[1].passangers << std::endl;
