@@ -1,4 +1,3 @@
-#include <iostream>
 #include <cassert>
 
 enum class Portrait
@@ -110,13 +109,17 @@ BombDefusionDecision takeDecision(BombCharacteristics bomb)
 
 int main()
 {
-    BombCharacteristics bomb{Portrait::LENIN};
-    BombDefusionDecision result = takeDecision(bomb);
-    assert(result.shouldDefuse == false);
+    {
+        BombCharacteristics bomb{Portrait::LENIN};
+        BombDefusionDecision result = takeDecision(bomb);
+        assert(result.shouldDefuse == false);
+    }
+    {
+        BombCharacteristics bomb{Portrait::WASHINGTON, BulbColor::BLUE, false, 11};
+        BombDefusionDecision result = takeDecision(bomb);
+        assert(result.shouldDefuse == true && result.wire == WireColor::GREEN);
+    }
 
-    BombCharacteristics bomb1{Portrait::WASHINGTON, BulbColor::BLUE, false, 11};
-    BombDefusionDecision result1 = takeDecision(bomb1);
-    assert(result1.shouldDefuse == true && result1.wire == WireColor::GREEN);
 
     BombCharacteristics bomb2{Portrait::WASHINGTON, BulbColor::BLUE, false, 10};
     BombDefusionDecision result2 = takeDecision(bomb2);
