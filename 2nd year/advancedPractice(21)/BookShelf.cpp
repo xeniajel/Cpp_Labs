@@ -16,10 +16,8 @@ struct BookShelf
 bool shelve_book(BookShelf *shelf, size_t index, Book book)
 {
     assert(shelf != nullptr);
-    if (index >= shelf->slots.size())
-    {
-        return false;
-    }
+    assert(index < shelf->slots.size());
+
     if (shelf->slots[index].has_value())
     {
         return false;
@@ -57,7 +55,7 @@ int empty_count(const BookShelf &shelf)
 int main()
 {
     BookShelf bookshelf{};
-    shelve_book(&bookshelf, 2, Book {.title = "Atlas"});
+    shelve_book(&bookshelf, 2, Book{.title = "Atlas"});
     take_book(bookshelf, 0);
     int freeSlots = empty_count(bookshelf);
 }
